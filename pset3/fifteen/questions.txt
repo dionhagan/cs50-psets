@@ -1,0 +1,9 @@
+questions.txt
+
+Computer Science 50
+Problem Set 3
+
+0. The game allows square matrices from 3x3 to a 9x9 
+1. The game is stored in a 2D array
+2. greet()
+3. init, draw, move, won

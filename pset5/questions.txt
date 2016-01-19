@@ -1,0 +1,66 @@
+0.  A lung disease better known as silicosis. Also the longest word in the
+    English Language according to the Oxford English Dictionary
+1.  getrusage() returns resource usage measures for "who"
+2.  16:
+       struct timeval ru_utime; /* user CPU time used */
+       struct timeval ru_stime; /* system CPU time used */
+       long   ru_maxrss;        /* maximum resident set size */
+       long   ru_ixrss;         /* integral shared memory size */
+       long   ru_idrss;         /* integral unshared data size */
+       long   ru_isrss;         /* integral unshared stack size */
+       long   ru_minflt;        /* page reclaims (soft page faults) */
+       long   ru_majflt;        /* page faults (hard page faults) */
+       long   ru_nswap;         /* swaps */
+       long   ru_inblock;       /* block input operations */
+       long   ru_oublock;       /* block output operations */
+       long   ru_msgsnd;        /* IPC messages sent */
+       long   ru_msgrcv;        /* IPC messages received */
+       long   ru_nsignals;      /* signals received */
+       long   ru_nvcsw;         /* voluntary context switches */
+       long   ru_nivcsw;        /* involuntary context switches */
+3.  If we pass them in by value, we have to pass in the entire structs, which
+    would be a waste of time and resources.
+    
+4.  The main() function begins by loading a textfile and a dictionary. It then
+    loops through the text, reading the file stream character by character in
+    order to separate one word from the next. It does this by checking whether
+    the character is alphanumeric or an apostrophe (if located after the first
+    letter), marking the word as complete when it encounters a char (such as a
+    space or new line) that doesn't satisfy the above two conditions.
+
+    The main() function then stops to check the complete word for a misspelling,
+    sets index back to 0 (indicating the beginning of the next word), and continues
+    through the loop reading the rest of the characters until the file stream
+    signals EOF.
+    
+    If the loop reads a numeric char or string that is longer than the longest
+    word in the dictionary, we "consume" or read in the rest of the word to get
+    it out of the way without checking whether or not the word is misspelled,
+    given we've already deemed it not to be a word.
+        
+5.  In using fscanf() in place of fgetc(), we expose our code to a couple
+    problems/inefficiencies. The first being, we have to allocate memory for 
+    a string before we can read it from the file stream, and the length of a 
+    word in the text file isn't subject to the same constraints that the string
+    is due to C's memory allocation system. In addition, using fscanf and not
+    iterating over each character individually eliminates any possibility of 
+    skipping the checking of words with non-alphanumeric characters within each
+    word.
+
+6.  We declare these as constant because checking and loading are always the same (function-wise)
+
+7.  My program implemented a trie. The root node contains an array of node pointer
+    children which point to the first letter of each word. These node pointers
+    also contain children arrays with node pointer elements that contain the
+    subsequent letters in each word
+
+8.  Because I used a trie as my data structure of choice, 
+    and tries experience a near constant retrieval timeretrieval was actually
+    very fast. 
+
+9.  I didn't make any changes that improved the performance, but I also never
+    completely figured out how to free the children nodes effectively. I went
+    to OH several times, but never really received any guidance other than use
+    the debugger.
+
+10. No performance bottlenecks other than the memory issue outlined above.

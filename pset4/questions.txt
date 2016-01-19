@@ -1,0 +1,26 @@
+0.  BMP: 4 billion+
+    GIF: 256
+    PNG: 16 million
+    JPEG: 16 million
+1.  GIF supports animation
+2.  Lossy - deletes some of the data in the file
+    Lossless - uses a reversible algorithm to compress the file, so it can 
+    go back and forth between compressed and decompressed
+3.  JPEG
+4.  address table info is deleted, 
+    but the file remains on the hard drive
+5.  we can delete files using a secure option that replaces the memory section
+    with all zeros and leaves no remnants
+6.  declares various integer types
+7.  this lets you write code that's platform independent
+8.  BYTE = 8; DWORD, LONG = 32; WORD = 16;
+9.  0x42 and 0x4d
+10. bfSize is the size of the file while biSize is the size of the BITMAPINFOHEADER struct
+11. image is upside down vertically
+12. biBitCount
+13. this happens if the user doesn't have permission to write to the directory
+14. we always want to read in one structure at a time
+15. 3
+16. fseek moves the pointer to a given location in the open file stream
+17. SEEK_CUR gives the current location of the pointer
+18. Rick Astley
